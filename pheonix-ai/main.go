@@ -28,8 +28,9 @@ func main() {
 			return c.Status(fiber.StatusInternalServerError).SendString("Error al guardar archivo")
 		}
 
-		// Procesar el PDF utilizando PhoenixIA
-		ai := pheonix.NewPhoenixIA()
+		apiKey := "tu-clave-api"
+		ai := pheonix.NewPhoenixIA(apiKey)
+
 		response, err := pdf_processor.ProcessPDF(tempFile.Name(), ai)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).SendString("Error al procesar PDF")
